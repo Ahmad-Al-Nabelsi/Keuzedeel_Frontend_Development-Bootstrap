@@ -1,0 +1,19 @@
+body {
+    min-height: 100vh;
+}
+
+main {
+    min-height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+}
+
+.card {
+    border-radius: 1rem;
+}
+
+@media (max-width: 991.98px) {
+    main {
+        align-items: flex-start;
+    }
+}
