@@ -1,5 +1,15 @@
 # Sprint 2
 
+## Studentgegevens
+
+- Studentnaam: Ahmad Al Nabelsi
+- Studentnummer: 97115953
+
+## Periode
+
+- Begindatum: 06-10-2026
+- Einddatum: 20-10-2026
+
 ## Sprintdoel
 
 In deze sprint bouw ik het Klantenbeheer Dashboard verder uit.

@@ -5,6 +5,11 @@
 - Studentnaam: Ahmad Al Nabelsi
 - Studentnummer: 97115953
 
+## Periode
+
+- Begindatum: 24-09-2026
+- Einddatum: 20-10-2026
+
 ## Projectbeschrijving
 
 Voor het keuzedeel Frontend Development ontwikkel ik een responsive frontend voor een klantenbeheerapplicatie.
@@ -16,11 +21,6 @@ Op de loginpagina staan een korte uitleg over de applicatie, e-mail- en wachtwoo
 Na het klikken op Inloggen gaat de gebruiker naar het dashboard. In het dashboard kan de gebruiker klanten bekijken, zoeken, toevoegen en wijzigen. Bovenaan staat een begroeting met de gebruikersnaam en een knop Uitloggen. Uitloggen brengt de gebruiker terug naar de loginpagina.
 
 Dit project bevat alleen de frontend. Er is geen echte authenticatie, backend of database.
-
-## Periode
-
-- Begindatum: 24-09-2026
-- Einddatum: 20-10-2026
 
 ## Functionaliteiten
 

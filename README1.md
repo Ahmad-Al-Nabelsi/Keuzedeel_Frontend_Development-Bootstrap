@@ -1,5 +1,15 @@
 # Sprint 1
 
+## Studentgegevens
+
+- Studentnaam: Ahmad Al Nabelsi
+- Studentnummer: 97115953
+
+## Periode
+
+- Begindatum: 24-09-2026
+- Einddatum: 30-09-2026
+
 ## Sprintdoel
 
 In deze sprint bouw ik de openbare loginpagina van het Klantenbeheer Dashboard met Bootstrap en koppel ik deze aan het bestaande dashboard als frontendnavigatie.
