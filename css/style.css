@@ -2,7 +2,7 @@ body {
     min-height: 100vh;
 }
 
-main {
+.login-page main {
     min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@ main {
 }
 
 @media (max-width: 991.98px) {
-    main {
+    .login-page main {
         align-items: flex-start;
     }
 }
