@@ -4,6 +4,8 @@ const togglePasswordButton = document.getElementById("togglePassword");
 const customerSearch = document.getElementById("customerSearch");
 const customerTable = document.getElementById("customerTable");
 
+if (togglePasswordButton && passwordInput) {
+
 togglePasswordButton.addEventListener("click", function () {
     const passwordIsHidden = passwordInput.type === "password";
 
@@ -15,9 +17,11 @@ togglePasswordButton.addEventListener("click", function () {
     icon.classList.toggle("bi-eye-slash");
 });
 
+}
+
 
 if (customerSearch && customerTable) {
-
+    
     customerSearch.addEventListener("input", function () {
 
         const searchValue = customerSearch.value.toLowerCase();
