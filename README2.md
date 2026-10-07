@@ -12,9 +12,9 @@
 
 ## Sprintdoel
 
-In deze sprint bouw ik het Klantenbeheer Dashboard verder uit.
-Ik maak het klantenoverzicht, zorg dat het dashboard responsive is,
-voer SEO-optimalisaties uit en publiceer de website online.
+In deze sprint werk ik het Klantenbeheer Dashboard volledig af.
+Ik bouw de resterende klantfuncties, voer SEO-optimalisaties uit,
+publiceer de website online en test het complete project.
 
 ## Activiteiten
 
