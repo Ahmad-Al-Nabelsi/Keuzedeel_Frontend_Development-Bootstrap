@@ -32,11 +32,6 @@ voer SEO-optimalisaties uit en publiceer de website online.
 - Fictieve klantgegevens tonen.
 - View, Edit en Delete knoppen toevoegen.
 
-### Responsive design
-
-- Dashboard geschikt maken voor mobiel, tablet en desktop.
-- Responsive problemen oplossen.
-
 ### SEO optimalisatie
 
 - Title controleren.
