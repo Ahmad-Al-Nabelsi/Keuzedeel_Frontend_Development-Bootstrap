@@ -94,11 +94,12 @@ if (customers.length === 0) {
 </button>
 
             <button type="button"
-                    class="btn btn-sm btn-danger"
-                    aria-label="Klant verwijderen"
-                    title="Verwijderen">
-                <i class="bi bi-trash"></i>
-            </button>
+        class="btn btn-sm btn-danger delete-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant verwijderen"
+        title="Verwijderen">
+    <i class="bi bi-trash"></i>
+</button>
         `;
 
         row.appendChild(actionsCell);
@@ -216,6 +217,65 @@ editCustomerForm.addEventListener("submit", function (event) {
     modal.hide();
 
     // Tabel opnieuw tonen met gewijzigde gegevens
+    window.location.reload();
+});
+
+
+// Klant verwijderen
+const deleteCustomerModal = document.getElementById("deleteCustomerModal");
+const confirmDeleteButton = document.getElementById("confirmDeleteCustomer");
+
+let customerIdToDelete = null;
+
+// Verwijdervenster openen
+customerTable.addEventListener("click", function (event) {
+
+    const deleteButton = event.target.closest(".delete-customer");
+
+    if (!deleteButton) {
+        return;
+    }
+
+    customerIdToDelete = deleteButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerIdToDelete;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("deleteCustomerName").textContent =
+        customer.naam;
+
+    const modal = bootstrap.Modal.getOrCreateInstance(deleteCustomerModal);
+    modal.show();
+});
+
+
+// Verwijderen bevestigen
+confirmDeleteButton.addEventListener("click", function () {
+
+    if (customerIdToDelete === null) {
+        return;
+    }
+
+    const updatedCustomers = customers.filter(function (customer) {
+        return String(customer.id) !== customerIdToDelete;
+    });
+
+    localStorage.setItem(
+        "customers",
+        JSON.stringify(updatedCustomers)
+    );
+
+    const modal = bootstrap.Modal.getOrCreateInstance(deleteCustomerModal);
+    modal.hide();
+
+    customerIdToDelete = null;
+
+    // Tabel vernieuwen
     window.location.reload();
 });
 
