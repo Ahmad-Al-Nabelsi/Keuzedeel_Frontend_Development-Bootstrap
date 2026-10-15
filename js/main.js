@@ -78,11 +78,12 @@ if (customers.length === 0) {
 
         actionsCell.innerHTML = `
             <button type="button"
-                    class="btn btn-sm btn-primary"
-                    aria-label="Klant bekijken"
-                    title="Bekijken">
-                <i class="bi bi-eye"></i>
-            </button>
+        class="btn btn-sm btn-primary view-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant bekijken"
+        title="Bekijken">
+    <i class="bi bi-eye"></i>
+</button>
 
             <button type="button"
                     class="btn btn-sm btn-warning"
@@ -103,6 +104,38 @@ if (customers.length === 0) {
 
         tableBody.appendChild(row);
     });
+
+    
+// Klantgegevens bekijken
+customerTable.addEventListener("click", function (event) {
+
+    const viewButton = event.target.closest(".view-customer");
+
+    if (!viewButton) {
+        return;
+    }
+
+    const customerId = viewButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("viewName").textContent = customer.naam;
+    document.getElementById("viewGender").textContent = customer.geslacht;
+    document.getElementById("viewCountry").textContent = customer.land;
+    document.getElementById("viewAge").textContent = customer.leeftijd;
+
+    const modalElement = document.getElementById("viewCustomerModal");
+
+    const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+    modal.show();
+});
 
 
     // Zoekfunctie

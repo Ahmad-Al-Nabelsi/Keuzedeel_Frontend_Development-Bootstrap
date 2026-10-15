@@ -150,6 +150,60 @@
 
 </section>
 
+
+<!-- Klantgegevens bekijken -->
+<div class="modal fade" id="viewCustomerModal"
+     tabindex="-1"
+     aria-labelledby="viewCustomerModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 class="modal-title fs-5"
+                    id="viewCustomerModalLabel">
+                    Klantgegevens
+                </h2>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Sluiten">
+                </button>
+            </div>
+
+            <div class="modal-body">
+
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Naam</dt>
+                    <dd class="col-sm-8" id="viewName"></dd>
+
+                    <dt class="col-sm-4">Geslacht</dt>
+                    <dd class="col-sm-8" id="viewGender"></dd>
+
+                    <dt class="col-sm-4">Land</dt>
+                    <dd class="col-sm-8" id="viewCountry"></dd>
+
+                    <dt class="col-sm-4">Leeftijd</dt>
+                    <dd class="col-sm-8" id="viewAge"></dd>
+                </dl>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Sluiten
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
             </main>
 
         </div>
