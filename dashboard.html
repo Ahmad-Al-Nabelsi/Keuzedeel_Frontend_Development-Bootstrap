@@ -204,6 +204,115 @@
     </div>
 </div>
 
+
+<!-- Klantgegevens wijzigen -->
+<div class="modal fade" id="editCustomerModal"
+     tabindex="-1"
+     aria-labelledby="editCustomerModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <form id="editCustomerForm" novalidate>
+
+                <div class="modal-header">
+                    <h2 class="modal-title fs-5"
+                        id="editCustomerModalLabel">
+                        Klant wijzigen
+                    </h2>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Sluiten">
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <input type="hidden" id="editCustomerId">
+
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">
+                            Naam
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               id="editName"
+                               required>
+                        <div class="invalid-feedback">
+                            Vul een naam in.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editGender" class="form-label">
+                            Geslacht
+                        </label>
+                        <select class="form-select"
+                                id="editGender"
+                                required>
+                            <option value="">Maak een keuze</option>
+                            <option value="Man">Man</option>
+                            <option value="Vrouw">Vrouw</option>
+                            <option value="Anders">Anders</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Kies een geslacht.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editCountry" class="form-label">
+                            Land
+                        </label>
+                        <input type="text"
+                               class="form-control"
+                               id="editCountry"
+                               required>
+                        <div class="invalid-feedback">
+                            Vul een land in.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editAge" class="form-label">
+                            Leeftijd
+                        </label>
+                        <input type="number"
+                               class="form-control"
+                               id="editAge"
+                               min="0"
+                               max="120"
+                               required>
+                        <div class="invalid-feedback">
+                            Vul een geldige leeftijd in.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                        Annuleren
+                    </button>
+
+                    <button type="submit"
+                            class="btn btn-primary">
+                        Opslaan
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
             </main>
 
         </div>

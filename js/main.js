@@ -86,11 +86,12 @@ if (customers.length === 0) {
 </button>
 
             <button type="button"
-                    class="btn btn-sm btn-warning"
-                    aria-label="Klant wijzigen"
-                    title="Wijzigen">
-                <i class="bi bi-pencil"></i>
-            </button>
+        class="btn btn-sm btn-warning edit-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant wijzigen"
+        title="Wijzigen">
+    <i class="bi bi-pencil"></i>
+</button>
 
             <button type="button"
                     class="btn btn-sm btn-danger"
@@ -135,6 +136,87 @@ customerTable.addEventListener("click", function (event) {
     const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
 
     modal.show();
+});
+
+
+// Klantgegevens wijzigen
+const editCustomerForm = document.getElementById("editCustomerForm");
+const editCustomerModal = document.getElementById("editCustomerModal");
+
+// Wijzigformulier openen
+customerTable.addEventListener("click", function (event) {
+
+    const editButton = event.target.closest(".edit-customer");
+
+    if (!editButton) {
+        return;
+    }
+
+    const customerId = editButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("editCustomerId").value = customer.id;
+    document.getElementById("editName").value = customer.naam;
+    document.getElementById("editGender").value = customer.geslacht;
+    document.getElementById("editCountry").value = customer.land;
+    document.getElementById("editAge").value = customer.leeftijd;
+
+    editCustomerForm.classList.remove("was-validated");
+
+    const modal = bootstrap.Modal.getOrCreateInstance(editCustomerModal);
+    modal.show();
+});
+
+
+// Wijzigingen opslaan
+editCustomerForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    editCustomerForm.classList.add("was-validated");
+
+    if (!editCustomerForm.checkValidity()) {
+        return;
+    }
+
+    const customerId = document.getElementById("editCustomerId").value;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    const naam = document.getElementById("editName").value.trim();
+    const land = document.getElementById("editCountry").value.trim();
+
+    if (!naam || !land) {
+        return;
+    }
+
+    customer.naam = naam;
+    customer.geslacht = document.getElementById("editGender").value;
+    customer.land = land;
+    customer.leeftijd = Number(
+        document.getElementById("editAge").value
+    );
+
+    localStorage.setItem("customers", JSON.stringify(customers));
+
+    const modal = bootstrap.Modal.getOrCreateInstance(editCustomerModal);
+    modal.hide();
+
+    // Tabel opnieuw tonen met gewijzigde gegevens
+    window.location.reload();
 });
 
 
