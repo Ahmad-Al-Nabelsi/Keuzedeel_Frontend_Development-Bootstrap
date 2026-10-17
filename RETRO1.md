@@ -19,4 +19,6 @@ Er waren geen grote problemen tijdens deze sprint.
 
 ## Wat ga ik in de volgende sprint doen?
 
-In Sprint 2 ga ik verder met het bouwen van het Klantenbeheer Dashboard en de pagina's voor klantgegevens.
+In Sprint 2 ga ik het Klantenbeheer Dashboard afmaken.
+Ook ga ik de klantfuncties bouwen, SEO verbeteren,
+de website online publiceren en het project testen.
