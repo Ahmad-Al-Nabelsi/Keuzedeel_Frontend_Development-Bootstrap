@@ -1,4 +1,4 @@
-# RETRO-1
+# Retrospective - Sprint 1
 
 ## Wat ging goed?
 
