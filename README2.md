@@ -22,18 +22,17 @@ publiceer de website online en test het complete project.
 
 - Sidebar en header afronden.
 - Klantenoverzicht maken.
-- Zoekfunctie toevoegen.
-- Fictieve klantgegevens tonen.
+- Zoekfunctie toevoegen met JavaScript.
+- Klantgegevens tonen in een Bootstrap Table.
 - View, Edit en Delete knoppen toevoegen.
 
 ### Klantfuncties
 
 - Add Customer pagina maken.
-- Klantgegevens bekijken.
-- Klantgegevens wijzigen.
-- Klant verwijderen.
-- Formulieren maken met Bootstrap.
+- Klantgegevens toevoegen, bekijken, wijzigen en verwijderen.
+- Formulieren en modals maken met Bootstrap.
 - Basisvalidatie toevoegen met JavaScript.
+- Klantgegevens opslaan in localStorage.
 
 ### SEO optimalisatie
 
@@ -65,5 +64,5 @@ publiceer de website online en test het complete project.
 ## Verwacht resultaat
 
 Aan het einde van Sprint 2 is het Klantenbeheer Dashboard volledig afgerond.
-De klantfuncties werken aan de frontend, de website is getest,
-SEO is toegepast en de website is online gepubliceerd.
+De klantfuncties werken met JavaScript en de gegevens worden opgeslagen in localStorage.
+De website is getest, SEO is toegepast en de website is online gepubliceerd.
