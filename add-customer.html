@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Klant toevoegen | Klantenbeheer Dashboard</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-light">
+
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+
+            <!-- Sidebar -->
+            <aside class="col-md-3 col-lg-2 bg-dark text-white p-3">
+                <h4 class="mb-4">Klantenbeheer</h4>
+
+                <nav class="nav flex-column gap-2">
+                    <a class="nav-link text-white" href="dashboard.html">
+                        <i class="bi bi-house"></i> Dashboard
+                    </a>
+
+                    <a class="nav-link text-white active"
+                       href="add-customer.html">
+                        <i class="bi bi-person-plus"></i> Klant toevoegen
+                    </a>
+
+                    <a class="nav-link text-white" href="index.html">
+                        <i class="bi bi-box-arrow-right"></i> Uitloggen
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main content -->
+            <main class="col-md-9 col-lg-10 p-4">
+
+                <div class="d-flex justify-content-between
+                            align-items-center mb-4">
+                    <h1 class="h3">Klant toevoegen</h1>
+
+                    <a href="dashboard.html"
+                       class="btn btn-outline-secondary">
+                        Terug
+                    </a>
+                </div>
+
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+
+                        <form id="customerForm"
+                              class="needs-validation"
+                              novalidate>
+
+                            <div class="mb-3">
+                                <label for="customerName"
+                                       class="form-label">
+                                    Naam
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       id="customerName"
+                                       required>
+
+                                <div class="invalid-feedback">
+                                    Vul een naam in.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="customerGender"
+                                       class="form-label">
+                                    Geslacht
+                                </label>
+
+                                <select class="form-select"
+                                        id="customerGender"
+                                        required>
+                                    <option value="">Maak een keuze</option>
+                                    <option value="Man">Man</option>
+                                    <option value="Vrouw">Vrouw</option>
+                                    <option value="Anders">Anders</option>
+                                </select>
+
+                                <div class="invalid-feedback">
+                                    Kies een geslacht.
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="customerCountry"
+                                       class="form-label">
+                                    Land
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       id="customerCountry"
+                                       required>
+
+                                <div class="invalid-feedback">
+                                    Vul een land in.
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="customerAge"
+                                       class="form-label">
+                                    Leeftijd
+                                </label>
+
+                                <input type="number"
+                                       class="form-control"
+                                       id="customerAge"
+                                       min="0"
+                                       max="120"
+                                       required>
+
+                                <div class="invalid-feedback">
+                                    Vul een geldige leeftijd in.
+                                </div>
+                            </div>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i>
+                                Opslaan
+                            </button>
+
+                            <a href="dashboard.html"
+                               class="btn btn-secondary">
+                                Annuleren
+                            </a>
+
+                        </form>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/add-customer.js"></script>
+
+</body>
+</html>

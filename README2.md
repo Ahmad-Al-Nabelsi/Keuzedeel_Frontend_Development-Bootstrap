@@ -12,48 +12,58 @@
 
 ## Sprintdoel
 
-In deze sprint bouw ik het Klantenbeheer Dashboard verder uit.
-Ik maak het klantenoverzicht, zorg dat het dashboard responsive is,
-voer SEO-optimalisaties uit en publiceer de website online.
+In deze sprint werk ik het Klantenbeheer Dashboard volledig af.
+Ik bouw de resterende klantfuncties, voer SEO-optimalisaties uit,
+publiceer de website online en test het complete project.
 
 ## Activiteiten
 
-### Dashboard bouwen
+### Dashboard en klantenoverzicht
 
-- Sidebar bouwen.
-- Header maken.
-- Welkom en Uitloggen toevoegen.
-- Hoofdcontent structureren.
-
-### Klantenoverzicht bouwen
-
-- Zoekveld toevoegen.
-- Bootstrap Table maken.
+- Sidebar en header afronden.
+- Klantenoverzicht maken.
+- Zoekfunctie toevoegen.
 - Fictieve klantgegevens tonen.
 - View, Edit en Delete knoppen toevoegen.
 
-### Responsive design
+### Klantfuncties
 
-- Dashboard geschikt maken voor mobiel, tablet en desktop.
-- Responsive problemen oplossen.
+- Add Customer pagina maken.
+- Klantgegevens bekijken.
+- Klantgegevens wijzigen.
+- Klant verwijderen.
+- Formulieren maken met Bootstrap.
+- Basisvalidatie toevoegen met JavaScript.
 
 ### SEO optimalisatie
 
-- Title controleren.
-- Meta description toevoegen.
+- Title en meta description verbeteren.
 - Heading-structuur controleren.
-- Semantische HTML toepassen.
+- Semantische HTML gebruiken.
 - Dashboard op noindex zetten.
-- Lighthouse SEO-test uitvoeren.
+- Lighthouse testen uitvoeren.
+- SEO-resultaten vastleggen in een rapport.
 
 ### Website online publiceren
 
-- GitHub Pages instellen.
-- Online website testen.
+- Website publiceren met GitHub Pages.
 - Website toevoegen aan Google Search Console.
+- Eigendom van de website verifiëren.
+- Live URL-test uitvoeren.
 - Indexering aanvragen.
+- sitemap.xml toevoegen en indienen.
+
+### Testen en afronden
+
+- Alle pagina's en functies testen.
+- Navigatie controleren.
+- Formulieren en validatie testen.
+- Website testen in Chrome en Edge.
+- Fouten oplossen.
+- Eindcontrole uitvoeren.
 
 ## Verwacht resultaat
 
-Aan het einde van Sprint 2 is het dashboard gebouwd,
-responsive gemaakt, SEO geoptimaliseerd en online gepubliceerd.
+Aan het einde van Sprint 2 is het Klantenbeheer Dashboard volledig afgerond.
+De klantfuncties werken aan de frontend, de website is getest,
+SEO is toegepast en de website is online gepubliceerd.

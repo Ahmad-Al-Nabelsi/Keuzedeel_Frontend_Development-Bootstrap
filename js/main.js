@@ -1,30 +1,291 @@
+
 const passwordInput = document.getElementById("password");
 const togglePasswordButton = document.getElementById("togglePassword");
 
 const customerSearch = document.getElementById("customerSearch");
 const customerTable = document.getElementById("customerTable");
 
-if (togglePasswordButton && passwordInput) {
+// Wachtwoord tonen en verbergen
+if (passwordInput && togglePasswordButton) {
 
-togglePasswordButton.addEventListener("click", function () {
-    const passwordIsHidden = passwordInput.type === "password";
+    togglePasswordButton.addEventListener("click", function () {
 
-    passwordInput.type = passwordIsHidden ? "text" : "password";
+        const passwordIsHidden = passwordInput.type === "password";
 
-    const icon = togglePasswordButton.querySelector("i");
+        passwordInput.type = passwordIsHidden
+            ? "text"
+            : "password";
 
-    icon.classList.toggle("bi-eye");
-    icon.classList.toggle("bi-eye-slash");
-});
+        const icon = togglePasswordButton.querySelector("i");
 
+        icon.classList.toggle("bi-eye");
+        icon.classList.toggle("bi-eye-slash");
+    });
 }
 
 
+// Klantenoverzicht
 if (customerSearch && customerTable) {
+
+    // Klanten ophalen uit localStorage
+const customers = JSON.parse(
+    localStorage.getItem("customers") || "[]"
+);
+
+// Tabel leegmaken voordat klanten worden getoond
+const tableBody = customerTable.querySelector("tbody");
+
+tableBody.innerHTML = "";
+
+if (customers.length === 0) {
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+
+    cell.colSpan = 6;
+    cell.className = "text-center text-secondary py-4";
+    cell.textContent = "Er zijn nog geen klanten toegevoegd.";
+
+    row.appendChild(cell);
+    tableBody.appendChild(row);
+}
+
+    // Klanten tonen in de tabel
+    customers.forEach(function (customer, index) {
+
+        const row = document.createElement("tr");
+
+        row.dataset.customerId = customer.id;
+
+        const values = [
+            index + 1,
+            customer.naam,
+            customer.geslacht,
+            customer.land,
+            customer.leeftijd
+        ];
+
+        values.forEach(function (value) {
+
+            const cell = document.createElement("td");
+
+            cell.textContent = value;
+
+            row.appendChild(cell);
+        });
+
+        // Actieknoppen
+        const actionsCell = document.createElement("td");
+
+        actionsCell.innerHTML = `
+            <button type="button"
+        class="btn btn-sm btn-primary view-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant bekijken"
+        title="Bekijken">
+    <i class="bi bi-eye"></i>
+</button>
+
+            <button type="button"
+        class="btn btn-sm btn-warning edit-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant wijzigen"
+        title="Wijzigen">
+    <i class="bi bi-pencil"></i>
+</button>
+
+            <button type="button"
+        class="btn btn-sm btn-danger delete-customer"
+        data-customer-id="${customer.id}"
+        aria-label="Klant verwijderen"
+        title="Verwijderen">
+    <i class="bi bi-trash"></i>
+</button>
+        `;
+
+        row.appendChild(actionsCell);
+
+        tableBody.appendChild(row);
+    });
+
     
+// Klantgegevens bekijken
+customerTable.addEventListener("click", function (event) {
+
+    const viewButton = event.target.closest(".view-customer");
+
+    if (!viewButton) {
+        return;
+    }
+
+    const customerId = viewButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("viewName").textContent = customer.naam;
+    document.getElementById("viewGender").textContent = customer.geslacht;
+    document.getElementById("viewCountry").textContent = customer.land;
+    document.getElementById("viewAge").textContent = customer.leeftijd;
+
+    const modalElement = document.getElementById("viewCustomerModal");
+
+    const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+    modal.show();
+});
+
+
+// Klantgegevens wijzigen
+const editCustomerForm = document.getElementById("editCustomerForm");
+const editCustomerModal = document.getElementById("editCustomerModal");
+
+// Wijzigformulier openen
+customerTable.addEventListener("click", function (event) {
+
+    const editButton = event.target.closest(".edit-customer");
+
+    if (!editButton) {
+        return;
+    }
+
+    const customerId = editButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("editCustomerId").value = customer.id;
+    document.getElementById("editName").value = customer.naam;
+    document.getElementById("editGender").value = customer.geslacht;
+    document.getElementById("editCountry").value = customer.land;
+    document.getElementById("editAge").value = customer.leeftijd;
+
+    editCustomerForm.classList.remove("was-validated");
+
+    const modal = bootstrap.Modal.getOrCreateInstance(editCustomerModal);
+    modal.show();
+});
+
+
+// Wijzigingen opslaan
+editCustomerForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    editCustomerForm.classList.add("was-validated");
+
+    if (!editCustomerForm.checkValidity()) {
+        return;
+    }
+
+    const customerId = document.getElementById("editCustomerId").value;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerId;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    const naam = document.getElementById("editName").value.trim();
+    const land = document.getElementById("editCountry").value.trim();
+
+    if (!naam || !land) {
+        return;
+    }
+
+    customer.naam = naam;
+    customer.geslacht = document.getElementById("editGender").value;
+    customer.land = land;
+    customer.leeftijd = Number(
+        document.getElementById("editAge").value
+    );
+
+    localStorage.setItem("customers", JSON.stringify(customers));
+
+    const modal = bootstrap.Modal.getOrCreateInstance(editCustomerModal);
+    modal.hide();
+
+    // Tabel opnieuw tonen met gewijzigde gegevens
+    window.location.reload();
+});
+
+
+// Klant verwijderen
+const deleteCustomerModal = document.getElementById("deleteCustomerModal");
+const confirmDeleteButton = document.getElementById("confirmDeleteCustomer");
+
+let customerIdToDelete = null;
+
+// Verwijdervenster openen
+customerTable.addEventListener("click", function (event) {
+
+    const deleteButton = event.target.closest(".delete-customer");
+
+    if (!deleteButton) {
+        return;
+    }
+
+    customerIdToDelete = deleteButton.dataset.customerId;
+
+    const customer = customers.find(function (item) {
+        return String(item.id) === customerIdToDelete;
+    });
+
+    if (!customer) {
+        return;
+    }
+
+    document.getElementById("deleteCustomerName").textContent =
+        customer.naam;
+
+    const modal = bootstrap.Modal.getOrCreateInstance(deleteCustomerModal);
+    modal.show();
+});
+
+
+// Verwijderen bevestigen
+confirmDeleteButton.addEventListener("click", function () {
+
+    if (customerIdToDelete === null) {
+        return;
+    }
+
+    const updatedCustomers = customers.filter(function (customer) {
+        return String(customer.id) !== customerIdToDelete;
+    });
+
+    localStorage.setItem(
+        "customers",
+        JSON.stringify(updatedCustomers)
+    );
+
+    const modal = bootstrap.Modal.getOrCreateInstance(deleteCustomerModal);
+    modal.hide();
+
+    customerIdToDelete = null;
+
+    // Tabel vernieuwen
+    window.location.reload();
+});
+
+
+    // Zoekfunctie
     customerSearch.addEventListener("input", function () {
 
-        const searchValue = customerSearch.value.toLowerCase();
+        const searchValue = customerSearch.value
+            .trim()
+            .toLowerCase();
 
         const rows = customerTable.querySelectorAll("tbody tr");
 
@@ -40,11 +301,7 @@ if (customerSearch && customerTable) {
                 customerName.includes(searchValue) ||
                 customerCountry.includes(searchValue);
 
-            row.style.display =
-                customerMatches ? "" : "none";
-
+            row.style.display = customerMatches ? "" : "none";
         });
-
     });
-
 }
